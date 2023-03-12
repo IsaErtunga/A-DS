@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		142C2B7629BE42A7000073FD /* hash-map-tests.c in Sources */ = {isa = PBXBuildFile; fileRef = 142C2B7529BE42A7000073FD /* hash-map-tests.c */; };
 		1441E24C29BE2AAF00439597 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 1441E24B29BE2AAF00439597 /* main.c */; };
 		14F4077B29BE2BCB0026869A /* list-sort.c in Sources */ = {isa = PBXBuildFile; fileRef = 14F4077A29BE2BCB0026869A /* list-sort.c */; };
 		14F4077E29BE31170026869A /* list-search.c in Sources */ = {isa = PBXBuildFile; fileRef = 14F4077D29BE31170026869A /* list-search.c */; };
@@ -32,6 +33,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		142C2B7429BE42A7000073FD /* hash-map-tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hash-map-tests.h"; sourceTree = "<group>"; };
+		142C2B7529BE42A7000073FD /* hash-map-tests.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "hash-map-tests.c"; sourceTree = "<group>"; };
 		1441E24829BE2AAF00439597 /* A-DS */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "A-DS"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1441E24B29BE2AAF00439597 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		14F4077929BE2BCB0026869A /* list-sort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "list-sort.h"; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 			children = (
 				14F4078729BE31D90026869A /* linked-list-tests.h */,
 				14F4078829BE31D90026869A /* linked-list-tests.c */,
+				142C2B7429BE42A7000073FD /* hash-map-tests.h */,
+				142C2B7529BE42A7000073FD /* hash-map-tests.c */,
 			);
 			path = tests;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				142C2B7629BE42A7000073FD /* hash-map-tests.c in Sources */,
 				14F4078929BE31D90026869A /* linked-list-tests.c in Sources */,
 				1441E24C29BE2AAF00439597 /* main.c in Sources */,
 				14F4077B29BE2BCB0026869A /* list-sort.c in Sources */,

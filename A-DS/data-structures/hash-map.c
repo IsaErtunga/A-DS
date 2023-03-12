@@ -23,12 +23,12 @@ HashKey* init_hash_key(char* keyStr) {
     return newHashKey;
 }
 
-// TODO Fix
-//void insert_value(HashMap* hashMap, char* keyStr, int value) {
-//    int hashIndex = (int)(hash((unsigned char*) keyStr) % hashMap->size);
-//    hashMap->keys[hashIndex]->keyStr = keyStr;
-//    prepend(hashMap->keys[hashIndex]->values, value);
-//}
+
+void insert_value(HashMap* hashMap, char* keyStr, void* value, uint8_t type) {
+    int hashIndex = (int)(hash((unsigned char*) keyStr) % hashMap->size);
+    hashMap->keys[hashIndex]->keyStr = keyStr;
+    append(hashMap->keys[hashIndex]->values, value, type);
+}
 
 void delete_value(void);
 void get_value(void);
@@ -41,6 +41,7 @@ void print_hash_map(HashMap* hashMap) {
     HashKey* traverseKeyPtr;
     for (int i = 0; i < hashMap->size; i++) {
         traverseKeyPtr = hashMap->keys[i];
+        
         if (traverseKeyPtr->values->size == 0) continue; // Unused
         
         printf("\t[%s]:", traverseKeyPtr->keyStr);

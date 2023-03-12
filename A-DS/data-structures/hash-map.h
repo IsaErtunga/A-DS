@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 #include "linked-list.h"
 
@@ -29,12 +30,14 @@ typedef struct HashMap {
 HashMap* init_hash_map(void);
 HashKey* init_hash_key(char* keyStr);
 
-void insert_value(HashMap* hashMap, char* key, int value);
+void insert_value(HashMap* hashMap, char* keyStr, void* value, uint8_t type);
 void delete_value(void);
 void get_value(void);
 
 void print_hash_map(HashMap* hashMap);
 
 unsigned long hash(unsigned char *str);
+
+void clean_hash_map(void);
 
 #endif /* hash_map_h */
