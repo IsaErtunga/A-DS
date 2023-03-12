@@ -13,9 +13,12 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#include "hash-map.h"
+
 #define L_INT       0
 #define L_FLOAT     1
 #define L_STRING    2
+#define L_KEYVALUE  3
 #define L_ERROR     -9999
 
 

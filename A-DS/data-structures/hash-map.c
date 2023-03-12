@@ -9,25 +9,26 @@
 
 HashMap* init_hash_map(void) {
     HashMap* newHashMap = (HashMap*)malloc(sizeof(HashMap));
-    newHashMap->size = sizeof(newHashMap->keys)/sizeof(newHashMap->keys[0]);
+    newHashMap->size = sizeof(newHashMap->keys) / sizeof(newHashMap->keys[0]);
     for (int i = 0; i < newHashMap->size; i++) {
-        newHashMap->keys[i] = init_hash_key("-");
+        newHashMap->keys[i] = init_list();
     }
     return newHashMap;
 }
 
-HashKey* init_hash_key(char* keyStr) {
-    HashKey* newHashKey = (HashKey*)malloc(sizeof(HashKey));
-    newHashKey->keyStr = keyStr;
-    newHashKey->values = init_list();
-    return newHashKey;
+KeyValue* create_key_value_pair(char* keyStr, void* value, uint8_t valueType) {
+    KeyValue* newKeyValue = (KeyValue*)malloc(sizeof(KeyValue));
+    newKeyValue->key = keyStr;
+    newKeyValue->value = value;
+    newKeyValue->valueType = valueType;
+    return newKeyValue;
 }
 
 
-void insert_value(HashMap* hashMap, char* keyStr, void* value, uint8_t type) {
+void insert_value(HashMap* hashMap, char* keyStr, void* value, uint8_t valueType) {
     int hashIndex = (int)(hash((unsigned char*) keyStr) % hashMap->size);
-    hashMap->keys[hashIndex]->keyStr = keyStr;
-    append(hashMap->keys[hashIndex]->values, value, type);
+    KeyValue* keyValue = create_key_value_pair(keyStr, value, valueType);
+    append(hashMap->keys[hashIndex], keyValue, L_KEYVALUE);
 }
 
 void delete_value(void);
@@ -38,16 +39,9 @@ void get_value(void);
 /* ------------ Helpers --------------*/
 void print_hash_map(HashMap* hashMap) {
     printf("{\n");
-    HashKey* traverseKeyPtr;
     for (int i = 0; i < hashMap->size; i++) {
-        traverseKeyPtr = hashMap->keys[i];
-        
-        if (traverseKeyPtr->values->size == 0) continue; // Unused
-        
-        printf("\t[%s]:", traverseKeyPtr->keyStr);
-        print_list(traverseKeyPtr->values);
+        print_list(hashMap->keys[i]);
     }
-    
     printf("}\n");
 }
 

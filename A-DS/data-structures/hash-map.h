@@ -12,27 +12,28 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-#include "linked-list.h"
+#include "./linked-list.h"
 
 #define HASH_MAP_SIZE 100
 
-typedef struct HashKey {
-    char* keyStr;
-    List* values;
-} HashKey;
+typedef struct KeyValue {
+    char* key;
+    void* value;
+    uint8_t valueType;
+} KeyValue;
 
 /* Each key stores a pointer to a linked list */
 typedef struct HashMap {
-    struct HashKey* keys[HASH_MAP_SIZE];
+    struct List* keys[HASH_MAP_SIZE];
     int size;
 } HashMap;
 
 HashMap* init_hash_map(void);
-HashKey* init_hash_key(char* keyStr);
+KeyValue* create_key_value_pair(char* keyStr, void* value, uint8_t valueType);
 
-void insert_value(HashMap* hashMap, char* keyStr, void* value, uint8_t type);
-void delete_value(void);
-void get_value(void);
+void insert_value(HashMap* hashMap, char* keyStr, void* value, uint8_t valueType);
+//void delete_value(void);
+//void get_value(void);
 
 void print_hash_map(HashMap* hashMap);
 

@@ -246,6 +246,9 @@ void print_node_in_list(ListNode* node) {
         case L_STRING:
             printf("%s", (char*)node->value);
             break;
+        case L_KEYVALUE:
+            printf("(%s:%d)", ((KeyValue*)node->value)->key, *(int*)((KeyValue*)node->value)->value);
+            break;
         default:
             printf("Data type is not supported\n");
             break;
