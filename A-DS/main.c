@@ -2,13 +2,13 @@
 //  main.c
 //  A-DS
 //
-//  Created by Isa Ertunga on 2023-03-12.
+//  Created by Isa Ertunga on 2023-02-24.
 //
 
 #include <stdio.h>
+#include "tests/linked-list-tests.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+    linked_list_test_remove();
     return 0;
 }
