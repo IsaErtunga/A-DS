@@ -23,17 +23,14 @@ List* init_list(void) {
     return newList;
 }
 
-/* ---------- ADD ---------- */
-
 /**
  Add to front
  - Rearrange head pointer to the new node
  - New node points to the previous head
  */
-void prepend(List* list, void* value, uint8_t type) {
+void prepend(List* list, int value) {
     ListNode* newNode = (ListNode*)malloc(sizeof(ListNode));
     newNode->value = value;
-    newNode->type = type;
     newNode->prev = NULL;
 
     if (list->size <= 0) {
@@ -53,10 +50,9 @@ void prepend(List* list, void* value, uint8_t type) {
  - Rearrange last node pointer to the last node
  - Route new node pointer to NULL
  */
-void append(List* list, void* value, uint8_t type) {
+void append(List* list, int value) {
     ListNode* newNode = (ListNode*)malloc(sizeof(ListNode));
     newNode->value = value;
-    newNode->type = type;
     newNode->next = NULL;
     
     if (list->size <= 0) { // first entry to the list
@@ -74,7 +70,7 @@ void append(List* list, void* value, uint8_t type) {
 /**
  Replace value at index
  */
-void insert_at_index(List* list, int index, void* new_value, int type) {
+void insert_at(List* list, int index, int newValue) {
     if (index < 0 || index >= list->size) {
         printf("Selected index need to be inside range [0..%d]\n", list->size-1);
         return;
@@ -94,12 +90,9 @@ void insert_at_index(List* list, int index, void* new_value, int type) {
         }
     }
 
-    traversePtr->value = new_value;
-    traversePtr->type = type;
+    traversePtr->value = newValue;
     free(traversePtr);
 }
-
-/* ---------- Remove ---------- */
 
 /**
  Removes from front of the lists
@@ -151,7 +144,7 @@ ListNode* pop_back(List* list) {
 List* create_list(int size) {
     List* list = init_list();
     for (int i = size-1; i >= 0; i--) {
-        prepend(list, &i, L_INT);
+        prepend(list, i);
     }
     return list;
 }
@@ -161,40 +154,40 @@ List* create_list(int size) {
  */
 void list_map(List* list, int (*mapFunc)(int, int)) {
     // Empty list
-    if (list->size == 0) return;
-    
-    ListNode* traversePtr = list->head;
-    while (traversePtr != NULL) {
-        int funcResult = (*mapFunc)(*(int*)traversePtr->value, 1);
-        printf("%d\n", funcResult);
-        free(traversePtr->value);
-        traversePtr->value = (void*)&funcResult;
-        traversePtr = traversePtr->next;
-    }
+//    if (list->size == 0) return;
+//
+//    ListNode* traversePtr = list->head;
+//    while (traversePtr != NULL) {
+//        int funcResult = (*mapFunc)(*(int*)traversePtr->value, 1);
+//        printf("%d\n", funcResult);
+//        free(traversePtr->value);
+//        traversePtr->value = (void*)&funcResult;
+//        traversePtr = traversePtr->next;
+//    }
 }
 
 /*
  TODO Not working with void* generic type
  */
 void list_filter(List* list, int (*filter_func)(int, int), int filter_value) {
-    if (list->head == 0) return;
-    
-    ListNode* current_node = list->head;
-    ListNode* previous_node = list->head;
-
-    while (current_node != NULL) {
-        if ((*filter_func)(*(int*)current_node->value, filter_value) == 1) {
-            previous_node = current_node;
-            current_node = current_node->next;
-            continue;
-        };
-        
-        // remove
-        previous_node->next = current_node->next;
-        current_node = current_node->next;
-        list->size = list->size - 1;
-        free(current_node);
-    }
+//    if (list->head == 0) return;
+//
+//    ListNode* current_node = list->head;
+//    ListNode* previous_node = list->head;
+//
+//    while (current_node != NULL) {
+//        if ((*filter_func)(*(int*)current_node->value, filter_value) == 1) {
+//            previous_node = current_node;
+//            current_node = current_node->next;
+//            continue;
+//        };
+//
+//        // remove
+//        previous_node->next = current_node->next;
+//        current_node = current_node->next;
+//        list->size = list->size - 1;
+//        free(current_node);
+//    }
 }
 
 //List* list_comprehension(List* list,
@@ -230,52 +223,14 @@ void print_list(List* list) {
     ListNode* traverse_ptr = list->head;
     printf("[");
     while (traverse_ptr != NULL) {
-        print_node_in_list(traverse_ptr);
+        printf("%d", traverse_ptr->value);
         if (traverse_ptr->next != NULL) printf(", ");
         traverse_ptr = traverse_ptr->next;
     }
     printf("]\n");
 }
 
-void print_node_in_list(ListNode* node) {
-    switch (node->type) {
-        case L_INT:
-            printf("%d", *(int*)node->value);
-            break;
-        case L_FLOAT:
-            printf("%.3f", *(float*)node->value);
-            break;
-        case L_STRING:
-            printf("%s", (char*)node->value);
-            break;
-        case L_KEYVALUE:
-            printf("(%s:%d)", ((KeyValue*)node->value)->key, *(int*)((KeyValue*)node->value)->value);
-            break;
-        default:
-            printf("Data type is not supported\n");
-            break;
-    }
-}
-
-void print_node(ListNode* node) {
-    switch (node->type) {
-        case L_INT:
-            printf("%d\n", *(int*)node->value);
-            break;
-        case L_FLOAT:
-            printf("%.3f\n", *(float*)node->value);
-            break;
-        case L_STRING:
-            printf("%s\n", (char*)node->value);
-            break;
-        default:
-            printf("Data type is not supported\n");
-            break;
-    }
-}
-
-
-int get_list_size(List* list) {
+int get_size(List* list) {
     return list->size;
 }
 

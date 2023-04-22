@@ -28,7 +28,7 @@ KeyValue* create_key_value_pair(char* keyStr, void* value, uint8_t valueType) {
 void insert_value(HashMap* hashMap, char* keyStr, void* value, uint8_t valueType) {
     int hashIndex = (int)(hash((unsigned char*) keyStr) % hashMap->size);
     KeyValue* keyValue = create_key_value_pair(keyStr, value, valueType);
-    append(hashMap->keys[hashIndex], keyValue, L_KEYVALUE);
+    append(hashMap->keys[hashIndex], keyValue);
 }
 
 void delete_value(void);

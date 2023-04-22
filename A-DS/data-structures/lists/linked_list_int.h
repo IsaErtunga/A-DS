@@ -10,21 +10,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
 #include <stdbool.h>
 
-#include "../hash-maps/hash_map_int.h"
-
-#define L_INT       0
-#define L_FLOAT     1
-#define L_STRING    2
-#define L_KEYVALUE  3
 #define L_ERROR     -9999
 
-
 typedef struct ListNode {
-    void* value;
-    uint8_t type;           // 0: int, 1: float, 2: string
+    int value;
     struct ListNode* next;
     struct ListNode* prev;
 } ListNode;
@@ -35,12 +26,15 @@ typedef struct List {
     ListNode* tail;
 } List;
 
+/* INIT */
 List* init_list(void);
 
-void prepend(List* list, void* value, uint8_t type);
-void append(List* list, void* value, uint8_t type);
+/* ADD */
+void prepend(List* list, int value);
+void append(List* list, int value);
+void insert_at(List* list, int index, int newValue);
 
-void insert_at_index(List* list, int index, void* new_value, int type);
+/* REMOVE */
 ListNode* pop_front(List* list);
 ListNode* pop_back(List* list);
 
@@ -53,8 +47,6 @@ List* list_comprehension(List* list,
 
 ListNode* element_at(List* list, int index);
 void print_list(List* list);
-void print_node_in_list(ListNode* node);
-void print_node(ListNode* node);
 int get_list_size(List* list);
 
 void clean_list(List* list);
