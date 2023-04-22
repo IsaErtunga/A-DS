@@ -9,7 +9,7 @@
 #define list_sort_h
 
 #include <stdio.h>
-#include "../data-structures/linked-list.h"
+#include "../data-structures/lists/linked_list_int.h"
 
 void bubble_sort(List* list);
 

@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 
-#include "../data-structures/hash-map.h"
+#include "../data-structures/hash-maps/hash_map_int.h"
 
 void hash_map_test(void);
 

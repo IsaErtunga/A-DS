@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 
-#include "../data-structures/linked-list.h"
+#include "../data-structures/lists/linked_list_int.h"
 #include "./list-sort.h"
 
 

@@ -1,19 +1,19 @@
 //
-//  linked-list.h
+//  linked_list_int.h
 //  A-DS
 //
 //  Created by Isa Ertunga on 2023-02-25.
 //
 
-#ifndef linked_list_h
-#define linked_list_h
+#ifndef linked_list_int_h
+#define linked_list_int_h
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "hash-map.h"
+#include "../hash-maps/hash_map_int.h"
 
 #define L_INT       0
 #define L_FLOAT     1
@@ -59,4 +59,4 @@ int get_list_size(List* list);
 
 void clean_list(List* list);
 
-#endif /* linked_list_h */
+#endif /* linked_list_int_h */

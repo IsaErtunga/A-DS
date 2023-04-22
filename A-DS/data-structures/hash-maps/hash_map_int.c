@@ -1,11 +1,11 @@
 //
-//  hash-map.c
+//  hash_map_int.c
 //  A-DS
 //
 //  Created by Isa Ertunga on 2023-02-26.
 //
 
-#include "hash-map.h"
+#include "hash_map_int.h"
 
 HashMap* init_hash_map(void) {
     HashMap* newHashMap = (HashMap*)malloc(sizeof(HashMap));
@@ -32,7 +32,7 @@ void insert_value(HashMap* hashMap, char* keyStr, void* value, uint8_t valueType
 }
 
 void delete_value(void);
-void get_value(void);
+void get_value(HashMap* hashMap, char* key) {}
 
 
 

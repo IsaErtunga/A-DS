@@ -1,11 +1,11 @@
 //
-//  linked-list.c
+//  linked_list_int.c
 //  A-DS
 //
 //  Created by Isa Ertunga on 2023-02-25.
 //
 
-#include "linked-list.h"
+#include "linked_list_int.h"
 
 /**
  Create new list
@@ -218,6 +218,8 @@ ListNode* element_at(List* list, int index) {
     
     return traverse_ptr;
 }
+
+// ListNode* list_find(List* list, void* value, uint8_t type) {}
 
 void print_list(List* list) {
     if (list->size == 0) {
