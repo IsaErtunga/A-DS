@@ -111,7 +111,8 @@ ListNode* pop_front(List* list) {
         list->head = NULL;
         list->tail = NULL;
     }
-
+    
+    list->size--;
     return poppedNode;
 }
 
@@ -132,11 +133,11 @@ ListNode* pop_back(List* list) {
         list->head = NULL;
         list->tail = NULL;
     }
+    
+    list->size--;
     return poppedNode;
 }
 
-
-/* ---------- Higher order stuff (by reference) ---------- */
 /**
  Creates list with given size.
  TODO: Create list from range like create_list_range(4, 8) -> [4,5,6,7]
@@ -152,42 +153,41 @@ List* create_list(int size) {
 /**
  TODO Not working with void* generic type
  */
-void list_map(List* list, int (*mapFunc)(int, int)) {
+bool list_map(List* list, int (*mapFunc)(int, int), int mapValue) {
     // Empty list
-//    if (list->size == 0) return;
-//
-//    ListNode* traversePtr = list->head;
-//    while (traversePtr != NULL) {
-//        int funcResult = (*mapFunc)(*(int*)traversePtr->value, 1);
-//        printf("%d\n", funcResult);
-//        free(traversePtr->value);
-//        traversePtr->value = (void*)&funcResult;
-//        traversePtr = traversePtr->next;
-//    }
+    if (list->size == 0) return false;
+
+    ListNode* traversePtr = list->head;
+    while (traversePtr != NULL) {
+        traversePtr->value = (*mapFunc)(traversePtr->value, mapValue);
+        traversePtr = traversePtr->next;
+    }
+    
+    return true;
 }
 
 /*
  TODO Not working with void* generic type
  */
-void list_filter(List* list, int (*filter_func)(int, int), int filter_value) {
-//    if (list->head == 0) return;
-//
-//    ListNode* current_node = list->head;
-//    ListNode* previous_node = list->head;
-//
-//    while (current_node != NULL) {
-//        if ((*filter_func)(*(int*)current_node->value, filter_value) == 1) {
-//            previous_node = current_node;
-//            current_node = current_node->next;
-//            continue;
-//        };
-//
-//        // remove
-//        previous_node->next = current_node->next;
-//        current_node = current_node->next;
-//        list->size = list->size - 1;
-//        free(current_node);
-//    }
+void list_filter(List* list, int (*filterFunc)(int, int), int filterValue) {
+    if (list->head == 0) return;
+
+    ListNode* currentNode = list->head;
+    ListNode* previousNode = list->head;
+
+    while (currentNode != NULL) {
+        if ((*filterFunc)(currentNode->value, filterValue) == 1) {
+            previousNode = currentNode;
+            currentNode = currentNode->next;
+            continue;
+        };
+
+        // remove
+        previousNode->next = currentNode->next;
+        currentNode = currentNode->next;
+        list->size = list->size - 1;
+        free(currentNode);
+    }
 }
 
 //List* list_comprehension(List* list,
@@ -200,16 +200,16 @@ void list_filter(List* list, int (*filter_func)(int, int), int filter_value) {
 
 /* ---------- Helpers ---------- */
 
-ListNode* element_at(List* list, int index) {
-    if (list->size == 0 || index > list->size-1) return list->head;
+ListNode* value_at(List* list, int index) {
+    if (list->size == 0 || index >= list->size) return list->head;
     
     // find element by index
-    ListNode* traverse_ptr = list->head;
+    ListNode* traversePtr = list->head;
     for (int i = 0; i < index; i++) {
-        traverse_ptr = traverse_ptr->next;
+        traversePtr = traversePtr->next;
     }
     
-    return traverse_ptr;
+    return traversePtr;
 }
 
 // ListNode* list_find(List* list, void* value, uint8_t type) {}
