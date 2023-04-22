@@ -14,8 +14,8 @@
 #include "./list-sort.h"
 
 
-int binary_search(List* list, int value, int l, int r);
+int binary_search(IntList* list, int value, int l, int r);
 
-int search_list(List* list, int (*search_algorithm)(List*, int, int, int), int value);
+int search_list(IntList* list, int (*search_algorithm)(IntList*, int, int, int), int value);
 
 #endif /* list_search_h */

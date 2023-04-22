@@ -8,7 +8,7 @@
 #include "list-sort.h"
 
 
-void bubble_sort(List* list) {
+void bubble_sort(IntList* list) {
 //    int n = list->size;
 //
 //    for (int i = 0; i < n; i++) {
@@ -26,11 +26,11 @@ void bubble_sort(List* list) {
 
 
 
-void merge(List* list, int l, int m, int r) {
+void merge(IntList* list, int l, int m, int r) {
     
 }
 
-void merge_sort_recur(List* list, int l, int r) {
+void merge_sort_recur(IntList* list, int l, int r) {
     if (l >= r) return;
     int m = (l + r)/2;
     
@@ -40,14 +40,14 @@ void merge_sort_recur(List* list, int l, int r) {
     merge(list, l, m, r);
 }
 
-void merge_sort(List* list) {
+void merge_sort(IntList* list) {
     int l = 1;
     int r = list->size;
     merge_sort_recur(list, l, r);
 }
 
 
-void sort_list(List* unsorted_list, void (*sortAlgorithm)(List*)) {
+void sort_list(IntList* unsorted_list, void (*sortAlgorithm)(IntList*)) {
     sortAlgorithm(unsorted_list);
 }
 

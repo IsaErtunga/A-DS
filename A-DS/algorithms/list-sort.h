@@ -11,13 +11,13 @@
 #include <stdio.h>
 #include "../data-structures/lists/linked_list_int.h"
 
-void bubble_sort(List* list);
+void bubble_sort(IntList* list);
 
-void merge(List* list, int l, int m, int r);
-void merge_sort_recur(List* list, int l, int r);
-void merge_sort(List* list);
+void merge(IntList* list, int l, int m, int r);
+void merge_sort_recur(IntList* list, int l, int r);
+void merge_sort(IntList* list);
 
 
-void sort_list(List* unsorted, void (*sortAlgorithm)(List*));
+void sort_list(IntList* unsorted, void (*sortAlgorithm)(IntList*));
 
 #endif /* list_sort_h */

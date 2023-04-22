@@ -11,7 +11,7 @@ HashMap* init_hash_map(void) {
     HashMap* newHashMap = (HashMap*)malloc(sizeof(HashMap));
     newHashMap->size = sizeof(newHashMap->keys) / sizeof(newHashMap->keys[0]);
     for (int i = 0; i < newHashMap->size; i++) {
-        newHashMap->keys[i] = init_list();
+        newHashMap->keys[i] = ptr_init_list();
     }
     return newHashMap;
 }
@@ -27,33 +27,28 @@ KeyValue* create_key_value_pair(char* keyStr, int value) {
 void insert_value(HashMap* hashMap, char* keyStr, int value) {
     int hashIndex = (int)(hash((unsigned char*) keyStr) % hashMap->size);
     KeyValue* keyValue = create_key_value_pair(keyStr, value);
-    append(hashMap->keys[hashIndex], &keyValue);
+    ptr_append(hashMap->keys[hashIndex], keyValue);
 }
 
-void delete_value(void);
+void delete_value(void) {}
 void get_value(HashMap* hashMap, char* key) {}
 
-
-void print_key_value_pair(KeyValue* keyValue) {
-    
-}
 void print_hash_map(HashMap* hashMap) {
     printf("{\n");
     for (int i = 0; i < hashMap->size; i++) {
-        print_list(hashMap->keys[i]);
+        if (hashMap->keys[i]->size == 0) continue;
+        
+        PtrListNode* traversePtr = hashMap->keys[i]->head;
+        while (traversePtr != NULL) {
+            printf("\t%s: %d\n",
+                   ((KeyValue*)traversePtr->value)->key,
+                   ((KeyValue*)traversePtr->value)->value);
+            if (traversePtr->next != NULL) printf(", ");
+            traversePtr = traversePtr->next;
+        }
     }
     printf("}\n");
 }
-
-/*
- {
-    'hej': 10,
- 
- }
- 
- */
-
-
 
 /* ------------ djb2 Hash function --------------*/
 // https://stackoverflow.com/questions/7666509/hash-function-for-string

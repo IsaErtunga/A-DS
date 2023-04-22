@@ -14,45 +14,45 @@
 
 #define L_ERROR     -9999
 
-typedef struct ListNode {
+typedef struct IntListNode {
     int value;
-    struct ListNode* next;
-    struct ListNode* prev;
-} ListNode;
+    struct IntListNode* next;
+    struct IntListNode* prev;
+} IntListNode;
 
-typedef struct List {
+typedef struct IntList {
     int size;
-    ListNode* head;
-    ListNode* tail;
-} List;
+    IntListNode* head;
+    IntListNode* tail;
+} IntList;
 
 /* INIT */
-List* init_list(void);
+IntList* int_init_list(void);
 
 /* ADD */
-void prepend(List* list, int value);
-void append(List* list, int value);
-void insert_at(List* list, int index, int newValue);
+void int_prepend(IntList* list, int value);
+void int_append(IntList* list, int value);
+void int_insert_at(IntList* list, int index, int newValue);
 
 /* REMOVE */
-ListNode* pop_front(List* list);
-ListNode* pop_back(List* list);
+IntListNode* int_pop_front(IntList* list);
+IntListNode* int_pop_back(IntList* list);
 
 /* HIGHER ORDER STUFF */
-List* create_list(int size);
-List* list_map(List* list, int (*mapFunc)(int, int), int mapValue);
-List* list_filter(List* list, int (*filterFunc)(int, int), int filterValue);
-List* list_comprehension(List* list,
+IntList* int_create_list(int size);
+IntList* int_list_map(IntList* list, int (*mapFunc)(int, int), int mapValue);
+IntList* int_list_filter(IntList* list, int (*filterFunc)(int, int), int filterValue);
+IntList* int_list_comprehension(IntList* list,
                          int (*map_func)(int, int), int map_value,
                          int (*filter_func)(int, int), int filter_value);
 
 
 /* GETTERS */
-int value_at(List* list, int index);
-int get_list_size(List* list);
+int int_value_at(IntList* list, int index);
+int int_get_list_size(IntList* list);
 
 /* UTILS */
-void print_list(List* list);
-void clean_list(List* list);
+void int_print_list(IntList* list);
+void int_clean_list(IntList* list);
 
 #endif /* linked_list_int_h */

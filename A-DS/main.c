@@ -16,8 +16,8 @@ int main(int argc, const char * argv[]) {
 //    linked_list_test_remove();
 //    linked_list_test_map();
 //    linked_list_test_filter();
-    linked_list_test_list_comprehension();
+//    linked_list_test_list_comprehension();
     
-//    hash_map_test();
+    hash_map_test();
     return 0;
 }
