@@ -16,27 +16,27 @@ HashMap* init_hash_map(void) {
     return newHashMap;
 }
 
-KeyValue* create_key_value_pair(char* keyStr, void* value, uint8_t valueType) {
+KeyValue* create_key_value_pair(char* keyStr, int value) {
     KeyValue* newKeyValue = (KeyValue*)malloc(sizeof(KeyValue));
     newKeyValue->key = keyStr;
     newKeyValue->value = value;
-    newKeyValue->valueType = valueType;
     return newKeyValue;
 }
 
 
-void insert_value(HashMap* hashMap, char* keyStr, void* value, uint8_t valueType) {
+void insert_value(HashMap* hashMap, char* keyStr, int value) {
     int hashIndex = (int)(hash((unsigned char*) keyStr) % hashMap->size);
-    KeyValue* keyValue = create_key_value_pair(keyStr, value, valueType);
-    append(hashMap->keys[hashIndex], keyValue);
+    KeyValue* keyValue = create_key_value_pair(keyStr, value);
+    append(hashMap->keys[hashIndex], &keyValue);
 }
 
 void delete_value(void);
 void get_value(HashMap* hashMap, char* key) {}
 
 
-
-/* ------------ Helpers --------------*/
+void print_key_value_pair(KeyValue* keyValue) {
+    
+}
 void print_hash_map(HashMap* hashMap) {
     printf("{\n");
     for (int i = 0; i < hashMap->size; i++) {
@@ -45,7 +45,13 @@ void print_hash_map(HashMap* hashMap) {
     printf("}\n");
 }
 
-
+/*
+ {
+    'hej': 10,
+ 
+ }
+ 
+ */
 
 
 

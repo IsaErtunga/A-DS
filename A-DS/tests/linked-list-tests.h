@@ -17,5 +17,6 @@ void linked_list_test_add(void);
 void linked_list_test_remove(void);
 void linked_list_test_map(void);
 void linked_list_test_filter(void);
+void linked_list_test_list_comprehension(void);
 
 #endif /* linked_list_tests_h */

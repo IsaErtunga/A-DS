@@ -150,58 +150,38 @@ List* create_list(int size) {
     return list;
 }
 
-/**
- TODO Not working with void* generic type
- */
-bool list_map(List* list, int (*mapFunc)(int, int), int mapValue) {
-    // Empty list
-    if (list->size == 0) return false;
-
+List* list_map(List* list, int (*mapFunc)(int, int), int mapValue) {
+    List* newList = init_list();
     ListNode* traversePtr = list->head;
     while (traversePtr != NULL) {
-        traversePtr->value = (*mapFunc)(traversePtr->value, mapValue);
+        prepend(newList, (*mapFunc)(traversePtr->value, mapValue));
         traversePtr = traversePtr->next;
     }
-    
-    return true;
+    return newList;
 }
 
-/*
- TODO Not working with void* generic type
- */
-void list_filter(List* list, int (*filterFunc)(int, int), int filterValue) {
-    if (list->head == 0) return;
-
-    ListNode* currentNode = list->head;
-    ListNode* previousNode = list->head;
-
-    while (currentNode != NULL) {
-        if ((*filterFunc)(currentNode->value, filterValue) == 1) {
-            previousNode = currentNode;
-            currentNode = currentNode->next;
-            continue;
-        };
-
-        // remove
-        previousNode->next = currentNode->next;
-        currentNode = currentNode->next;
-        list->size = list->size - 1;
-        free(currentNode);
+List* list_filter(List* list, int (*filterFunc)(int, int), int filterValue) {
+    List* newList = init_list();
+    ListNode* traversePtr = list->head;
+    while (traversePtr != NULL) {
+        if ((*filterFunc)(traversePtr->value, filterValue)) {
+            prepend(newList, traversePtr->value);
+        }
+        traversePtr = traversePtr->next;
     }
+    return newList;
 }
 
-//List* list_comprehension(List* list,
-//                        int (*map_func)(int, int), int map_value,
-//                        int (*filter_func)(int, int), int filter_value) {
-//    list_map(list, map_func, map_value);
-//    list_filter(list, filter_func, filter_value);
-//    return list;
-//}
+List* list_comprehension(List* list,
+                        int (*map_func)(int, int), int mapValue,
+                        int (*filter_func)(int, int), int filterValue) {
+    return list_filter(list_map(list, map_func, mapValue), filter_func, filterValue);
+}
 
 /* ---------- Helpers ---------- */
 
-ListNode* value_at(List* list, int index) {
-    if (list->size == 0 || index >= list->size) return list->head;
+int value_at(List* list, int index) {
+    //if (list->size == 0 || index >= list->size) return list->head->value;
     
     // find element by index
     ListNode* traversePtr = list->head;
@@ -209,7 +189,7 @@ ListNode* value_at(List* list, int index) {
         traversePtr = traversePtr->next;
     }
     
-    return traversePtr;
+    return traversePtr->value;
 }
 
 // ListNode* list_find(List* list, void* value, uint8_t type) {}

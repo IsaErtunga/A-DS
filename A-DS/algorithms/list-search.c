@@ -14,7 +14,7 @@ int binary_search(List* list, int value, int l, int r) {
     int mid, index_value;
     while (l <= r) {
         mid = l + (r - l) / 2;
-        index_value = element_at(list, mid)->value;
+        index_value = value_at(list, mid);
         if (index_value == value) {
             return mid;
         } else if (index_value < value) {

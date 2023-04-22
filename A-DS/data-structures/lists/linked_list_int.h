@@ -40,16 +40,18 @@ ListNode* pop_back(List* list);
 
 /* HIGHER ORDER STUFF */
 List* create_list(int size);
-bool list_map(List* list, int (*mapFunc)(int, int), int mapValue);
-void list_filter(List* list, int (*filter_func)(int, int), int filter_value);
+List* list_map(List* list, int (*mapFunc)(int, int), int mapValue);
+List* list_filter(List* list, int (*filterFunc)(int, int), int filterValue);
 List* list_comprehension(List* list,
                          int (*map_func)(int, int), int map_value,
                          int (*filter_func)(int, int), int filter_value);
 
 
-/* HELPERS */
-ListNode* value_at(List* list, int index);
+/* GETTERS */
+int value_at(List* list, int index);
 int get_list_size(List* list);
+
+/* UTILS */
 void print_list(List* list);
 void clean_list(List* list);
 

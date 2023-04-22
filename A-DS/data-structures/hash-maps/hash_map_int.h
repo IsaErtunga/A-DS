@@ -18,8 +18,7 @@
 
 typedef struct KeyValue {
     char* key;
-    void* value;
-    uint8_t valueType;
+    int value;
 } KeyValue;
 
 /* Each key stores a pointer to a linked list */
@@ -28,17 +27,21 @@ typedef struct HashMap {
     int size;
 } HashMap;
 
+/* INIT */
 HashMap* init_hash_map(void);
-KeyValue* create_key_value_pair(char* keyStr, void* value, uint8_t valueType);
+KeyValue* create_key_value_pair(char* keyStr, int value);
 
-void insert_value(HashMap* hashMap, char* keyStr, void* value, uint8_t valueType);
-//void delete_value(void);
+/* OPERATIONS */
+void insert_value(HashMap* hashMap, char* keyStr, int value);
+void delete_value(void);
 void get_value(HashMap* hashMap, char* key);
 
-void print_hash_map(HashMap* hashMap);
-
+/* HASH */
 unsigned long hash(unsigned char *str);
 
+/* HELPERS */
+void print_key_value_pair(KeyValue* keyValue);
+void print_hash_map(HashMap* hashMap);
 void clean_hash_map(void);
 
 #endif /* hash_map_int_h */

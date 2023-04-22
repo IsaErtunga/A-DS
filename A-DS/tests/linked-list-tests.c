@@ -52,10 +52,11 @@ void linked_list_test_map(void) {
     append(list, 3);
     append(list, 4);
     
-    list_map(list, &add, 1);
-    print_list(list);
+    List* mappedList = list_map(list, &add, 1);
+    print_list(mappedList);
     
     clean_list(list);
+    clean_list(mappedList);
 }
 
 void linked_list_test_filter(void) {
@@ -66,8 +67,25 @@ void linked_list_test_filter(void) {
     append(list, 3);
     append(list, 4);
     
-    list_map(list, &gt, 2);
-    print_list(list);
+    List* filteredList = list_filter(list, &gt, 2);
+    print_list(filteredList);
     
+    clean_list(filteredList);
     clean_list(list);
 }
+
+void linked_list_test_list_comprehension(void) {
+    List* list = init_list();
+        
+    append(list, 1);
+    append(list, 2);
+    append(list, 3);
+    append(list, 4);
+    
+    List* newList = list_comprehension(list, &add, 1, &gt, 2);
+    print_list(newList);
+    
+    clean_list(newList);
+    clean_list(list);
+}
+
