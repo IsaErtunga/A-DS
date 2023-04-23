@@ -15,6 +15,6 @@
 
 int binary_search_impl(IntList* list, int value, int l, int r);
 int binary_search(IntList* list, int value);
-int search_list(IntList* list, int (*searchAlgorithm)(IntList*, int), int value);
+int int_search_list(IntList* list, int (*searchAlgorithm)(IntList*, int), int value);
 
 #endif /* int_list_search_h */

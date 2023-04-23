@@ -100,7 +100,7 @@ void linked_list_test_search(void) {
     int_append(list, 7);
     int_append(list, 8);
 
-    int found = search_list(list, &binary_search, 4);
+    int found = int_search_list(list, &binary_search, 4);
     printf("%d\n", found);
     
     int_clean_list(list);

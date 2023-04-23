@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		142C2B7629BE42A7000073FD /* hash-map-tests.c in Sources */ = {isa = PBXBuildFile; fileRef = 142C2B7529BE42A7000073FD /* hash-map-tests.c */; };
 		1441E24C29BE2AAF00439597 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 1441E24B29BE2AAF00439597 /* main.c */; };
+		1471D4B929F5384900E9D719 /* ptr_list_search.c in Sources */ = {isa = PBXBuildFile; fileRef = 1471D4B829F5384900E9D719 /* ptr_list_search.c */; };
 		14DBF31829F3F44500369919 /* linked_list_int.c in Sources */ = {isa = PBXBuildFile; fileRef = 14DBF31729F3F44500369919 /* linked_list_int.c */; };
 		14DBF31C29F3F5BB00369919 /* hash_map_int.c in Sources */ = {isa = PBXBuildFile; fileRef = 14DBF31B29F3F5BB00369919 /* hash_map_int.c */; };
 		14DBF32229F4855400369919 /* linked_list_ptr.c in Sources */ = {isa = PBXBuildFile; fileRef = 14DBF32129F4855400369919 /* linked_list_ptr.c */; };
@@ -38,6 +39,8 @@
 		142C2B7529BE42A7000073FD /* hash-map-tests.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "hash-map-tests.c"; sourceTree = "<group>"; };
 		1441E24829BE2AAF00439597 /* A-DS */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "A-DS"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1441E24B29BE2AAF00439597 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		1471D4B729F5384900E9D719 /* ptr_list_search.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ptr_list_search.h; sourceTree = "<group>"; };
+		1471D4B829F5384900E9D719 /* ptr_list_search.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ptr_list_search.c; sourceTree = "<group>"; };
 		14DBF31629F3F44500369919 /* linked_list_int.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = linked_list_int.h; sourceTree = "<group>"; };
 		14DBF31729F3F44500369919 /* linked_list_int.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = linked_list_int.c; sourceTree = "<group>"; };
 		14DBF31A29F3F5BB00369919 /* hash_map_int.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hash_map_int.h; sourceTree = "<group>"; };
@@ -126,6 +129,8 @@
 				14F4077A29BE2BCB0026869A /* list-sort.c */,
 				14DBF32329F5258C00369919 /* int_list_search.h */,
 				14DBF32429F5258C00369919 /* int_list_search.c */,
+				1471D4B729F5384900E9D719 /* ptr_list_search.h */,
+				1471D4B829F5384900E9D719 /* ptr_list_search.c */,
 			);
 			path = algorithms;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 			files = (
 				142C2B7629BE42A7000073FD /* hash-map-tests.c in Sources */,
 				14F4078929BE31D90026869A /* linked-list-tests.c in Sources */,
+				1471D4B929F5384900E9D719 /* ptr_list_search.c in Sources */,
 				14DBF31829F3F44500369919 /* linked_list_int.c in Sources */,
 				1441E24C29BE2AAF00439597 /* main.c in Sources */,
 				14F4077B29BE2BCB0026869A /* list-sort.c in Sources */,

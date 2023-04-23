@@ -26,8 +26,10 @@ KeyValue* create_key_value_pair(char* keyStr, int value) {
 
 void insert_value(HashMap* hashMap, char* keyStr, int value) {
     int hashIndex = (int)(hash((unsigned char*) keyStr) % hashMap->size);
-    KeyValue* keyValue = create_key_value_pair(keyStr, value);
-    ptr_append(hashMap->keys[hashIndex], keyValue);
+    if (hash_list_search(hashMap->keys[hashIndex], keyStr) == -1) {
+        KeyValue* keyValue = create_key_value_pair(keyStr, value);
+        ptr_append(hashMap->keys[hashIndex], keyValue);
+    }
 }
 
 void delete_value(void) {}
@@ -47,11 +49,26 @@ int int_get_value(HashMap* hashMap, char* key) {
     return foundKey;
 }
 
+int hash_list_search(PtrList* hashList, char* key) {
+    int found = false;
+    int index = 0;
+    PtrListNode* traversePtr = hashList->head;
+    while (traversePtr != NULL) {
+        if (strcmp(((KeyValue*)traversePtr->value)->key, key) == 0) {
+            found = true;
+            break;
+        };
+        traversePtr = traversePtr -> next;
+        index++;
+    }
+    
+    return found ? index : -1;
+}
+
 void print_hash_map(HashMap* hashMap) {
     printf("{\n");
     for (int i = 0; i < hashMap->size; i++) {
         if (hashMap->keys[i]->size == 0) continue;
-        
         PtrListNode* traversePtr = hashMap->keys[i]->head;
         while (traversePtr != NULL) {
             printf("\t'%s': %d\n",
@@ -62,6 +79,12 @@ void print_hash_map(HashMap* hashMap) {
         }
     }
     printf("}\n");
+}
+
+void int_clean_hash_map(HashMap* hashMap) {
+    for (int i = 0; i < hashMap->size; i++) {
+        ptr_clean_list(hashMap->keys[i]);
+    }
 }
 
 /* ------------ djb2 Hash function --------------*/

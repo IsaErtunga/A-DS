@@ -12,7 +12,7 @@
 
 int main(int argc, const char * argv[]) {
     
-    linked_list_test();
-//    hash_map_test();
+//    linked_list_test();
+    hash_map_test();
     return 0;
 }

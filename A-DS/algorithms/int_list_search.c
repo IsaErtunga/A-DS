@@ -31,6 +31,6 @@ int binary_search(IntList* list, int value) {
     return binary_search_impl(list, value, l, r);
 }
 
-int search_list(IntList* list, int (*searchAlgorithm)(IntList*, int), int value) {
+int int_search_list(IntList* list, int (*searchAlgorithm)(IntList*, int), int value) {
     return searchAlgorithm(list, value);
 }

@@ -41,7 +41,8 @@ int int_get_value(HashMap* hashMap, char* key);
 unsigned long hash(unsigned char *str);
 
 /* HELPERS */
+int hash_list_search(PtrList* hashList, char* key);
 void print_hash_map(HashMap* hashMap);
-void clean_hash_map(void);
+void int_clean_hash_map(HashMap* hashMap);
 
 #endif /* hash_map_int_h */

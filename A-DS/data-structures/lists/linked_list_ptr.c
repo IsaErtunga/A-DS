@@ -150,34 +150,25 @@ void* ptr_value_at(PtrList* list, int index) {
     return traversePtr->value;
 }
 
-void ptr_print_list(PtrList* list) {
-    if (list->size == 0) {
-        printf("Empty list\n");
-        return;
-    }
-    
-    PtrListNode* traverse_ptr = list->head;
-    printf("[");
-    while (traverse_ptr != NULL) {
-        printf("x:x");
-        if (traverse_ptr->next != NULL) printf(", ");
-        traverse_ptr = traverse_ptr->next;
-    }
-    printf("]\n");
-}
-
 int ptr_get_size(PtrList* list) {
     return list->size;
 }
 
 
-/* ----------- Clean up -------------*/
 void ptr_clean_list(PtrList* list) {
-    PtrListNode* traversePtr = list->head->next; // start at second node
-    while (traversePtr != NULL) {
-        free(traversePtr->prev);
-        traversePtr = traversePtr->next;
+    if (list->size == 0) {
+        free(list->head);
+        free(list->tail);
+    } else if (list->size == 1) {
+        free(list->head->next);
+        free(list->head);
+    } else if (list->size > 1) {
+        PtrListNode* traversePtr = list->head->next;
+        while (traversePtr != NULL) {
+            free(traversePtr->prev);
+            traversePtr = traversePtr->next;
+        }
+        free(traversePtr);
     }
-    free(traversePtr);
     free(list);
 }
