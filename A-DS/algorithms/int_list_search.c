@@ -1,14 +1,13 @@
 //
-//  list-search.c
+//  int_list_search.c
 //  A-DS
 //
 //  Created by Isa Ertunga on 2023-02-26.
 //
 
-#include "list-search.h"
+#include "int_list_search.h"
 
-
-int binary_search(IntList* list, int value, int l, int r) {
+int binary_search_impl(IntList* list, int value, int l, int r) {
     sort_list(list, &bubble_sort);
     int_print_list(list);
     int mid, index_value;
@@ -26,11 +25,12 @@ int binary_search(IntList* list, int value, int l, int r) {
     return -1;
 }
 
-int search_list(IntList* list, int (*search_algorithm)(IntList*, int, int, int), int value) {
-    // if needed
+int binary_search(IntList* list, int value) {
     int l = 0;
     int r = list->size - 1;
+    return binary_search_impl(list, value, l, r);
+}
 
-    return search_algorithm(list, value, l, r);
-    
+int search_list(IntList* list, int (*searchAlgorithm)(IntList*, int), int value) {
+    return searchAlgorithm(list, value);
 }

@@ -12,8 +12,8 @@
 		14DBF31829F3F44500369919 /* linked_list_int.c in Sources */ = {isa = PBXBuildFile; fileRef = 14DBF31729F3F44500369919 /* linked_list_int.c */; };
 		14DBF31C29F3F5BB00369919 /* hash_map_int.c in Sources */ = {isa = PBXBuildFile; fileRef = 14DBF31B29F3F5BB00369919 /* hash_map_int.c */; };
 		14DBF32229F4855400369919 /* linked_list_ptr.c in Sources */ = {isa = PBXBuildFile; fileRef = 14DBF32129F4855400369919 /* linked_list_ptr.c */; };
+		14DBF32529F5258C00369919 /* int_list_search.c in Sources */ = {isa = PBXBuildFile; fileRef = 14DBF32429F5258C00369919 /* int_list_search.c */; };
 		14F4077B29BE2BCB0026869A /* list-sort.c in Sources */ = {isa = PBXBuildFile; fileRef = 14F4077A29BE2BCB0026869A /* list-sort.c */; };
-		14F4077E29BE31170026869A /* list-search.c in Sources */ = {isa = PBXBuildFile; fileRef = 14F4077D29BE31170026869A /* list-search.c */; };
 		14F4078929BE31D90026869A /* linked-list-tests.c in Sources */ = {isa = PBXBuildFile; fileRef = 14F4078829BE31D90026869A /* linked-list-tests.c */; };
 		14F4078D29BE32120026869A /* file-reader.c in Sources */ = {isa = PBXBuildFile; fileRef = 14F4078C29BE32120026869A /* file-reader.c */; };
 		14F4079029BE32290026869A /* filter-functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 14F4078F29BE32290026869A /* filter-functions.c */; };
@@ -44,10 +44,10 @@
 		14DBF31B29F3F5BB00369919 /* hash_map_int.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = hash_map_int.c; sourceTree = "<group>"; };
 		14DBF32029F4855400369919 /* linked_list_ptr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = linked_list_ptr.h; sourceTree = "<group>"; };
 		14DBF32129F4855400369919 /* linked_list_ptr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = linked_list_ptr.c; sourceTree = "<group>"; };
+		14DBF32329F5258C00369919 /* int_list_search.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = int_list_search.h; sourceTree = "<group>"; };
+		14DBF32429F5258C00369919 /* int_list_search.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = int_list_search.c; sourceTree = "<group>"; };
 		14F4077929BE2BCB0026869A /* list-sort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "list-sort.h"; sourceTree = "<group>"; };
 		14F4077A29BE2BCB0026869A /* list-sort.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "list-sort.c"; sourceTree = "<group>"; };
-		14F4077C29BE31170026869A /* list-search.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "list-search.h"; sourceTree = "<group>"; };
-		14F4077D29BE31170026869A /* list-search.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "list-search.c"; sourceTree = "<group>"; };
 		14F4078729BE31D90026869A /* linked-list-tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "linked-list-tests.h"; sourceTree = "<group>"; };
 		14F4078829BE31D90026869A /* linked-list-tests.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "linked-list-tests.c"; sourceTree = "<group>"; };
 		14F4078B29BE32120026869A /* file-reader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "file-reader.h"; sourceTree = "<group>"; };
@@ -124,8 +124,8 @@
 			children = (
 				14F4077929BE2BCB0026869A /* list-sort.h */,
 				14F4077A29BE2BCB0026869A /* list-sort.c */,
-				14F4077C29BE31170026869A /* list-search.h */,
-				14F4077D29BE31170026869A /* list-search.c */,
+				14DBF32329F5258C00369919 /* int_list_search.h */,
+				14DBF32429F5258C00369919 /* int_list_search.c */,
 			);
 			path = algorithms;
 			sourceTree = "<group>";
@@ -227,12 +227,12 @@
 				14DBF31829F3F44500369919 /* linked_list_int.c in Sources */,
 				1441E24C29BE2AAF00439597 /* main.c in Sources */,
 				14F4077B29BE2BCB0026869A /* list-sort.c in Sources */,
+				14DBF32529F5258C00369919 /* int_list_search.c in Sources */,
 				14DBF32229F4855400369919 /* linked_list_ptr.c in Sources */,
 				14F4079329BE323A0026869A /* map-functions.c in Sources */,
 				14DBF31C29F3F5BB00369919 /* hash_map_int.c in Sources */,
 				14F4078D29BE32120026869A /* file-reader.c in Sources */,
 				14F4079629BE32560026869A /* timer.c in Sources */,
-				14F4077E29BE31170026869A /* list-search.c in Sources */,
 				14F4079029BE32290026869A /* filter-functions.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

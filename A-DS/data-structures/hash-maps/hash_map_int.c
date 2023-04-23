@@ -31,7 +31,21 @@ void insert_value(HashMap* hashMap, char* keyStr, int value) {
 }
 
 void delete_value(void) {}
-void get_value(HashMap* hashMap, char* key) {}
+
+int int_get_value(HashMap* hashMap, char* key) {
+    int hashIndex = (int)(hash((unsigned char*) key) % hashMap->size);
+    PtrList* hashList = hashMap->keys[hashIndex];
+    // TODO need optimized list search
+    PtrListNode* traversePtr = hashList->head;
+    int foundKey = -1;
+    for (int i = 0; i < hashList->size; i++) {
+        if (strcmp(((KeyValue*)traversePtr->value)->key, key) == 0) {
+            foundKey = ((KeyValue*)traversePtr->value)->value;
+        }
+        traversePtr = traversePtr->next;
+    }
+    return foundKey;
+}
 
 void print_hash_map(HashMap* hashMap) {
     printf("{\n");
@@ -40,10 +54,10 @@ void print_hash_map(HashMap* hashMap) {
         
         PtrListNode* traversePtr = hashMap->keys[i]->head;
         while (traversePtr != NULL) {
-            printf("\t%s: %d\n",
+            printf("\t'%s': %d\n",
                    ((KeyValue*)traversePtr->value)->key,
                    ((KeyValue*)traversePtr->value)->value);
-            if (traversePtr->next != NULL) printf(", ");
+
             traversePtr = traversePtr->next;
         }
     }

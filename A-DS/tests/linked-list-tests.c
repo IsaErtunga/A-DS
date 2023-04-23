@@ -88,3 +88,24 @@ void linked_list_test_list_comprehension(void) {
     int_clean_list(list);
 }
 
+void linked_list_test_search(void) {
+    IntList* list = int_init_list();
+        
+    int_append(list, 1);
+    int_append(list, 2);
+    int_append(list, 3);
+    int_append(list, 4);
+    int_append(list, 5);
+    int_append(list, 6);
+    int_append(list, 7);
+    int_append(list, 8);
+
+    int found = search_list(list, &binary_search, 4);
+    printf("%d\n", found);
+    
+    int_clean_list(list);
+}
+
+void linked_list_test(void) {
+    linked_list_test_search();
+}

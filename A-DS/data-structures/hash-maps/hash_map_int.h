@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <string.h>
 
 #include "../lists/linked_list_ptr.h"
 
@@ -34,7 +35,7 @@ KeyValue* create_key_value_pair(char* keyStr, int value);
 /* OPERATIONS */
 void insert_value(HashMap* hashMap, char* keyStr, int value);
 void delete_value(void);
-void get_value(HashMap* hashMap, char* key);
+int int_get_value(HashMap* hashMap, char* key);
 
 /* HASH */
 unsigned long hash(unsigned char *str);
